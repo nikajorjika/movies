@@ -1,0 +1,22 @@
+@import "animations";
+
+:root {
+    --header-bg: rgba(20, 20, 20, 0.5);
+    --body-bg: rgba(20, 20, 20, 1);
+    --footer-bg: rgba(20, 20, 20, 1);
+}
+header {
+    background-color: var(--header-bg);
+}
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: #dcdcdc;
+    // background-color: var(--body-bg);
+}
+footer {
+    background-color: var(--footer-bg);
+}
+
+.slide-up {
+    animation: slideUp 0.3s ease-out;
+}

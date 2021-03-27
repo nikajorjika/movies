@@ -18,5 +18,8 @@ mix.override((webpackConfig) => {
 });
 
 mix.js("resources/js/app.js", "public/js")
-    .sass("resources/scss/app/app.scss", "public/css/app")
-    .sass("resources/scss/app/app.scss", "public/css/app");
+    .postCss("resources/css/tailwind.css", "public/css", [
+        require("tailwindcss"),
+    ])
+    .sass("resources/scss/app.scss", "public/css")
+    .vue();
