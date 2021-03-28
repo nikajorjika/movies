@@ -1,6 +1,6 @@
 <template>
     <footer class="flex py-3 mt-auto">
-        <div class="footer-top">
+        <div class="mx-auto w-full max-w-screen-2xl">
             <div class="container-fluid">
                 <div class="row footer-standard">
                     <div class="col-lg-7">
