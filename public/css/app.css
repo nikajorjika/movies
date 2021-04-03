@@ -1,3 +1,26 @@
+:root {
+  --mv-primary: #e50914;
+  --mv-primary-hover: #bf000a;
+  --mv-light-primary: #d7d3f8;
+  --mv-secondary: #6c757d;
+  --mv-white-color: #ffffff;
+  --mv-black-color: #000000;
+  --mv-title-text: #23203c;
+  --mv-body-text: #d1d0cf;
+  --mv-body-bg: #141414;
+  --mv-bg1: #191919;
+  --mv-body-border: #393750;
+  --mv-gold: #e6c75f;
+  --mv-black: #000000;
+  --mv-white-light-color: #404043;
+  --mv-sub-title-color: #4e87f2;
+  --mv-light-blue-color: #ebf1fe;
+  --mv-warning-color: #ff0000;
+  --mv-success-color: #398f14;
+  --mv-form-gradient-color: rgba(11, 1, 2, 0);
+  --mv-to-gradient-color: rgba(255, 55, 65, 0.3);
+}
+
 @-webkit-keyframes slideUp {
   0% {
     transform: translateY(20px);
@@ -6,6 +29,7 @@
     transform: translateY(0);
   }
 }
+
 @keyframes slideUp {
   0% {
     transform: translateY(20px);
@@ -14,23 +38,17 @@
     transform: translateY(0);
   }
 }
-:root {
-  --header-bg: rgba(20, 20, 20, 0.5);
-  --body-bg: rgba(20, 20, 20, 1);
-  --footer-bg: rgba(20, 20, 20, 1);
-}
-
 header {
-  background-color: var(--header-bg);
+  background-color: var(--mv-body-bg);
 }
 
 body {
   font-family: "Roboto", sans-serif;
-  background-color: #dcdcdc;
+  background-color: var(--mv-body-bg);
 }
 
 footer {
-  background-color: var(--footer-bg);
+  background-color: var(--mv-bg1);
 }
 
 .slide-up {

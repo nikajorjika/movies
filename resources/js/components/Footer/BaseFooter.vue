@@ -1,121 +1,66 @@
 <template>
-    <footer class="flex py-3 mt-auto">
-        <div class="mx-auto w-full max-w-screen-2xl">
-            <div class="container-fluid">
-                <div class="row footer-standard">
-                    <div class="col-lg-7">
-                        <div class="widget text-left">
-                            <div class="menu-footer-link-1-container">
-                                <ul id="menu-footer-link-1" class="menu">
-                                    <li
-                                        id="menu-item-7314"
-                                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7314"
-                                    >
-                                        <a
-                                            href="https://iqonic.design/wp-themes/streamit_wp/terms-of-use/"
-                                            >Terms Of Use</a
-                                        >
-                                    </li>
-                                    <li
-                                        id="menu-item-7316"
-                                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7316"
-                                    >
-                                        <a
-                                            href="https://iqonic.design/wp-themes/streamit_wp/privacy-policy/"
-                                            >Privacy-Policy</a
-                                        >
-                                    </li>
-                                    <li
-                                        id="menu-item-7119"
-                                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7119"
-                                    >
-                                        <a
-                                            href="https://iqonic.design/wp-themes/streamit_wp/blog/"
-                                            >Blog</a
-                                        >
-                                    </li>
-                                    <li
-                                        id="menu-item-7315"
-                                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7315"
-                                    >
-                                        <a
-                                            href="https://iqonic.design/wp-themes/streamit_wp/faq/"
-                                            >FAQ</a
-                                        >
-                                    </li>
-                                    <li
-                                        id="menu-item-7118"
-                                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7118"
-                                    >
-                                        <a
-                                            href="https://iqonic.design/wp-themes/streamit_wp/watch-list/"
-                                            >Watch List</a
-                                        >
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="widget text-left">
-                            <div class="textwidget">
-                                <p>
-                                    <small
-                                        >© 2021 STREAMIT. All Rights Reserved.
-                                        All videos and shows on this platform
-                                        are trademarks of, and all related
-                                        images and content are the property of,
-                                        Streamit Inc. Duplication and copy of
-                                        this is strictly prohibited. All rights
-                                        reserved.</small
-                                    >
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-6 mt-4 mt-lg-0">
-                        <h6 class="text-white footer-link-title">
-                            Follow Us :
-                        </h6>
-                        <ul class="info-share">
-                            <li>
-                                <a target="_blank" href="#"
-                                    ><i class="fa fa-facebook"></i
-                                ></a>
-                            </li>
-                            <li>
-                                <a target="_blank" href="#"
-                                    ><i class="fa fa-twitter"></i
-                                ></a>
-                            </li>
-                            <li>
-                                <a target="_blank" href="#"
-                                    ><i class="fa fa-google-plus"></i
-                                ></a>
-                            </li>
-                            <li>
-                                <a target="_blank" href="#"
-                                    ><i class="fa fa-github"></i
-                                ></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
-                        <div class="widget text-left">
-                            <div class="textwidget">
-                                <h6 class="footer-link-title">Streamit App</h6>
-                                <div class="d-flex align-items-center">
-                                    <a class="app-image" href="#"
-                                        ><img
-                                            src="https://iqonic.design/wp-themes/streamit_wp/wp-content/uploads/2020/12/022.png"
-                                            alt="play-store"/></a
-                                    ><br />
-                                    <a class="ml-3 app-image" href="#"
-                                        ><img
-                                            src="https://iqonic.design/wp-themes/streamit_wp/wp-content/uploads/2020/12/011.png"
-                                            alt="app-store"
-                                    /></a>
-                                </div>
-                            </div>
-                        </div>
+    <footer class="flex mt-auto">
+        <div class="mx-auto w-full max-w-screen-2xl py-16">
+            <div class="flex">
+                <div class="w-1/2">
+                    <ul class="text-white flex mb-7">
+                        <li
+                            v-for="{ name, href } in menu"
+                            :key="href"
+                            class="mr-5"
+                        >
+                            <a :href="href">{{ name }}</a>
+                        </li>
+                    </ul>
+                    <p class="text-gray-400 text-sm">
+                        © 2021 STREAMIT. All Rights Reserved. All videos and
+                        shows on this platform are trademarks of, and all
+                        related images and content are the property of, Streamit
+                        Inc. Duplication and copy of this is strictly
+                        prohibited. All rights reserved.
+                    </p>
+                </div>
+                <div class="ml-auto mr-10">
+                    <h6 class="mb-7 text-white">
+                        Follow Us :
+                    </h6>
+                    <ul class="flex">
+                        <li v-for="social in socials" :key="social.alt">
+                            <a
+                                target="_blank"
+                                href="#"
+                                class="block w-10 h-10 bg-gray-800 rounded-full mr-4 p-3 text-white hover:text-red-500 transition-all"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="{2}"
+                                        d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
+                                    />
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="">
+                    <h6 class="text-white mb-7">Streamit App</h6>
+                    <div class="flex">
+                        <a class="mr-5" href="#"
+                            ><img
+                                src="https://iqonic.design/wp-themes/streamit_wp/wp-content/uploads/2020/12/022.png"
+                                alt="play-store"/></a
+                        ><br />
+                        <a class="mr-5" href="#"
+                            ><img
+                                src="https://iqonic.design/wp-themes/streamit_wp/wp-content/uploads/2020/12/011.png"
+                                alt="app-store"
+                        /></a>
                     </div>
                 </div>
             </div>
@@ -125,8 +70,49 @@
 
 <script>
 export default {
-    setup() {
-        return {};
+    data() {
+        return {
+            menu: [
+                {
+                    name: "Terms Of Use",
+                    href: "#"
+                },
+                {
+                    name: "Privacy-Policy",
+                    href: "#"
+                },
+                {
+                    name: "Blog",
+                    href: "#"
+                },
+                {
+                    name: "FAQ",
+                    href: "#"
+                },
+                {
+                    name: "Watch List",
+                    href: "#"
+                }
+            ],
+            socials: [
+                {
+                    icon: "",
+                    alt: "Facebook"
+                },
+                {
+                    icon: "",
+                    alt: "Twitter"
+                },
+                {
+                    icon: "",
+                    alt: "G-Plus"
+                },
+                {
+                    icon: "",
+                    alt: "Github"
+                }
+            ]
+        };
     }
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-    <div class="slide w-full h-screen relative z-0" :style="styles">
+    <div class="slide w-full relative z-0" :style="styles">
         <description />
     </div>
 </template>
@@ -32,6 +32,7 @@ export default {
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
+    height: 40rem;
     &::before {
         content: "";
         display: block;

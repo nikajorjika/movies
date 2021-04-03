@@ -1,21 +1,16 @@
+@import "variables";
 @import "animations";
 @import "slider";
 
-:root {
-    --header-bg: rgba(20, 20, 20, 0.5);
-    --body-bg: rgba(20, 20, 20, 1);
-    --footer-bg: rgba(20, 20, 20, 1);
-}
 header {
-    background-color: var(--header-bg);
+    background-color: var(--mv-body-bg);
 }
 body {
     font-family: "Roboto", sans-serif;
-    background-color: #dcdcdc;
-    // background-color: var(--body-bg);
+    background-color: var(--mv-body-bg);
 }
 footer {
-    background-color: var(--footer-bg);
+    background-color: var(--mv-bg1);
 }
 
 .slide-up {
