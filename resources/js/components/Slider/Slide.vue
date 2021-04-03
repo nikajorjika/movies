@@ -1,27 +1,38 @@
 <template>
-    <div class="slide w-full h-screen relative z-0">
-        <img
-            src="https://iqonic.design/wp-themes/streamit_wp/wp-content/uploads/2020/12/sanddust2.jpg"
-            alt=""
-            class="w-full h-full object-cover"
-        />
+    <div class="slide w-full h-screen relative z-0" :style="styles">
+        <description />
     </div>
 </template>
 
 <script>
+import Description from "./Description";
 export default {
+    components: {
+        Description
+    },
     props: {
         slide: {
             type: Object,
             default: () => ({})
         }
+    },
+    data() {
+        return {
+            styles: {
+                backgroundImage:
+                    "url(https://iqonic.design/wp-themes/streamit_wp/wp-content/uploads/2020/12/sanddust2.jpg)"
+            }
+        };
     }
 };
 </script>
 <style lang="scss" scoped>
 .slide {
     color: red;
-    &::after {
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    &::before {
         content: "";
         display: block;
         width: 100%;
