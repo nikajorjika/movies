@@ -6,14 +6,14 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Title extends Resource
+class Movie extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\Models\Title::class;
+    public static $model = \App\Models\Movie::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.

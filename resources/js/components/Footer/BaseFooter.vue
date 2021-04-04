@@ -5,8 +5,8 @@
                 <div class="w-1/2">
                     <ul class="text-white flex mb-7">
                         <li
-                            v-for="{ name, href } in menu"
-                            :key="href"
+                            v-for="{ name, href, id } in menu"
+                            :key="id"
                             class="mr-5"
                         >
                             <a :href="href">{{ name }}</a>
@@ -25,7 +25,7 @@
                         Follow Us :
                     </h6>
                     <ul class="flex">
-                        <li v-for="social in socials" :key="social.alt">
+                        <li v-for="social in socials" :key="social.id">
                             <a
                                 target="_blank"
                                 href="#"
@@ -74,40 +74,49 @@ export default {
         return {
             menu: [
                 {
+                    id: 1,
                     name: "Terms Of Use",
                     href: "#"
                 },
                 {
+                    id: 2,
                     name: "Privacy-Policy",
                     href: "#"
                 },
                 {
+                    id: 3,
                     name: "Blog",
                     href: "#"
                 },
                 {
+                    id: 4,
                     name: "FAQ",
                     href: "#"
                 },
                 {
+                    id: 5,
                     name: "Watch List",
                     href: "#"
                 }
             ],
             socials: [
                 {
+                    id: 1,
                     icon: "",
                     alt: "Facebook"
                 },
                 {
+                    id: 2,
                     icon: "",
                     alt: "Twitter"
                 },
                 {
+                    id: 3,
                     icon: "",
                     alt: "G-Plus"
                 },
                 {
+                    id: 4,
                     icon: "",
                     alt: "Github"
                 }

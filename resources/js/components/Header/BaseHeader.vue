@@ -1,5 +1,5 @@
 <template>
-    <header class="h-20 fixed w-full top-0 right-0 left-0 z-10">
+    <header class="h-20 fixed w-full top-0 right-0 left-0 z-20">
         <div class="flex py-2 max-w-screen-2xl mx-auto h-full">
             <logo class="h-full w-40" />
             <responsive-navigation class="h-full mx-auto" />

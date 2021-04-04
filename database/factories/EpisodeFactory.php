@@ -24,9 +24,7 @@ class EpisodeFactory extends Factory
     {
         $name = $this->faker->text(10);
         return [
-            'name' => [
-                'en' => $name
-            ],
+            'name' => $name,
             'episode_number' => rand(0, 26),
             'release_date' => Carbon::now()->addDays(rand(0, 100)),
             'language_id' => 1,

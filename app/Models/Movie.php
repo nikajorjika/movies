@@ -8,7 +8,7 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Title extends Model implements HasMedia
+class Movie extends Model implements HasMedia
 {
     use HasFactory,
         InteractsWithMedia;
@@ -25,6 +25,7 @@ class Title extends Model implements HasMedia
     {
         return $this->hasMany(Episode::class);
     }
+
     /**
      * Laravel Spatie register media collections
      * @return void
@@ -32,6 +33,7 @@ class Title extends Model implements HasMedia
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('poster');
+        $this->addMediaCollection('cover');
     }
 
     /**
@@ -41,8 +43,8 @@ class Title extends Model implements HasMedia
     public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('thumb')
-              ->width(368)
-              ->height(232)
-              ->sharpen(10);
+            ->width(368)
+            ->height(232)
+            ->sharpen(10);
     }
 }

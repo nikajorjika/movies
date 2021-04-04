@@ -13,19 +13,19 @@
             >
                 <h6 class="text-current">
                     <a
-                        href=""
+                        :href="url"
                         tabindex="0"
                         class="block mb-2 focus:outline-none"
                     >
-                        My Office Boss
+                        {{ movie.name }}
                     </a>
                 </h6>
                 <div class="text-current">
-                    <div class=""></div>
-                    <span class="">2hr : 38mins</span>
+                    <div></div>
+                    <span>{{ movie.episodes.length }} Episodes</span>
                 </div>
                 <a
-                    href=""
+                    :href="url"
                     class="bg-red-500 hover:bg-red-700 transition-all text-white py-1 px-3 mt-4 flex justify-center items-center"
                     tabindex="0"
                 >
@@ -43,6 +43,11 @@ export default {
             type: Object,
             required: true
         }
+    },
+    data() {
+        return {
+            url: `/${this.movie.slug}`
+        };
     }
 };
 </script>

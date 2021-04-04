@@ -16,7 +16,7 @@ class Episode extends Model
     ];
 
     
-    public function title() {
-        return $this->belongsTo(Title::class);
+    public function movie() {
+        return $this->belongsTo(Movie::class);
     }
 }

@@ -1,5 +1,8 @@
 <template>
-    <div class="slide w-full relative z-0" :style="styles">
+    <div
+        class="slide w-full bg-center bg-cover bg-no-repeat relative z-0"
+        :style="styles"
+    >
         <description />
     </div>
 </template>
@@ -28,10 +31,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 .slide {
-    color: red;
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
     height: 40rem;
     &::before {
         content: "";

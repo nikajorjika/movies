@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Episode;
 use App\Models\Language;
-use App\Models\Title;
+use App\Models\Movie;
 use Illuminate\Database\Seeder;
 
 class DefaultStartupSeeder extends Seeder
@@ -22,8 +22,8 @@ class DefaultStartupSeeder extends Seeder
             'flag' => '/flas/en.png'
         ]);
 
-        Title::factory(10)->create()->each(function ($title) {
-            $title->episodes()->saveMany(Episode::factory(12)->make());
+        Movie::factory(50)->create()->each(function ($movie) {
+            $movie->episodes()->saveMany(Episode::factory(12)->make());
         });
     }
 }

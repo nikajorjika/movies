@@ -16,7 +16,7 @@ class SetUpInitialStructure extends Migration
 
         Schema::create('languages', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->json('name')->nullable();
+            $table->string('name')->nullable();
             $table->string('original_name');
             $table->string('flag');
             $table->timestamps();
@@ -24,16 +24,17 @@ class SetUpInitialStructure extends Migration
 
         Schema::create('genres', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->json('name')->nullable();
+            $table->string('name')->nullable();
             $table->timestamps();
         });
 
-        Schema::create('titles', function (Blueprint $table) {
+        Schema::create('movies', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->json('name')->nullable();
+            $table->string('name')->nullable();
+            $table->string('slug');
             $table->json('other_names')->nullable();
             $table->string('original_name');
-            $table->json('plot')->nullable();
+            $table->string('plot')->nullable();
             $table->enum('status', ['planned', 'ongoing', 'finished'])->default('ongoing');
             $table->timestamp('release_date');
             $table->timestamps();
@@ -41,19 +42,19 @@ class SetUpInitialStructure extends Migration
 
         Schema::create('episodes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->json('name')->nullable();
+            $table->string('name')->nullable();
             $table->integer('episode_number');
             $table->enum('type', ['dubbed', 'subbed']);
-            $table->foreignId('title_id')->constrained();
+            $table->foreignId('movie_id')->constrained();
             $table->foreignId('language_id')->constrained();
             $table->timestamp('release_date');
             $table->timestamps();
         });
-        
-        Schema::create('genre_title', function (Blueprint $table) {
+
+        Schema::create('genre_movie', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->foreignId('genre_id')->constrained();
-            $table->foreignId('title_id')->constrained();
+            $table->foreignId('movie_id')->constrained();
             $table->timestamps();
         });
     }
@@ -65,9 +66,9 @@ class SetUpInitialStructure extends Migration
      */
     public function down()
     {
-        Schema::drop('genre_title');
+        Schema::drop('genre_movie');
         Schema::drop('episodes');
-        Schema::drop('titles');
+        Schema::drop('movies');
         Schema::drop('genres');
         Schema::drop('languages');
     }

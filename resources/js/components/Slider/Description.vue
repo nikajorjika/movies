@@ -57,7 +57,7 @@
                         </p>
                     </div>
                     <div class="flex text-lg">
-                        <p class="text-red mr-4">Genres</p>
+                        <p class="text-red-700 mr-4">Genres</p>
                         <p class="text-white">
                             <span>Action</span>,
                             <span>Fantasy</span>

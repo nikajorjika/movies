@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomePageController;
+use App\Http\Controllers\MovieController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,3 +18,5 @@ use Illuminate\Support\Facades\Route;
 Route::mediaLibrary();
 
 Route::get('/', [HomePageController::class, 'index'])->name('home');
+
+Route::get('/{slug}', [MovieController::class, 'index'])->name('movie.details');
