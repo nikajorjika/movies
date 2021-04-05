@@ -1,31 +1,33 @@
 <template>
-    <div
-        class="cover mt-20 py-20 max-w-screen-2xl mx-auto h-full px-10 bg-center bg-cover bg-no-repeat relative"
-        :style="styles"
-    >
-        <description />
+    <div class="mt-20 mb-20 max-w-screen-2xl mx-auto flex">
+        <div class="relative cover">
+            <img
+                class="object-cover h-full w-full block"
+                src="https://iqonic.design/wp-themes/streamit_wp/wp-content/uploads/2020/12/sanddust2.jpg"
+                alt=""
+            />
+        </div>
+        <movie-info />
     </div>
 </template>
 
 <script>
-import Description from "components/Slider/Description";
+import MovieInfo from "components/Movie/MovieInfo";
 export default {
     components: {
-        Description
+        MovieInfo
     },
     data() {
-        return {
-            styles: {
-                backgroundImage:
-                    "url(https://iqonic.design/wp-themes/streamit_wp/wp-content/uploads/2020/12/sanddust2.jpg)"
-            }
-        };
+        return {};
     }
 };
 </script>
 
 <style lang="scss" scoped>
 .cover {
+    height: 22rem;
+    width: 15rem;
+
     &:before {
         content: "";
         position: absolute;
