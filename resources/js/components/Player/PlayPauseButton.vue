@@ -1,15 +1,16 @@
 <template>
     <div
         class="button-wrapper absolute inset-0 flex justify-center items-center cursor-pointer"
+        :class="{ animating: animating }"
         @click="handleClick"
     >
         <span
             v-if="!playing"
-            class="text-green-700 hover:text-green-900 opacity-0"
+            class="icon text-green-700 hover:text-green-900 opacity-0"
         >
             <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-28 w-28"
+                class="h-20 w-20"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -28,10 +29,10 @@
                 />
             </svg>
         </span>
-        <span v-else class="text-green-700 hover:text-green-900 opacity-0">
+        <span v-else class="icon text-green-700 hover:text-green-900 opacity-0">
             <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-28 w-28"
+                class="h-20 w-20"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -54,18 +55,27 @@ export default {
             required: true
         }
     },
+    data() {
+        return {
+            animating: false
+        };
+    },
     methods: {
         handleClick() {
             this.$emit("click");
             this.$emit("update:playing", !this.playing);
+            this.animating = true;
+            setTimeout(() => {
+                this.animating = false;
+            }, 500);
         }
     }
 };
 </script>
 <style lang="scss" scoped>
 .button-wrapper {
-    &:active {
-        span {
+    &.animating {
+        .icon {
             animation: fadeout 0.5s linear 1 normal forwards;
         }
     }
@@ -78,7 +88,6 @@ export default {
 
     to {
         opacity: 0;
-        -webkit-transform: scale(2);
         transform: scale(2);
     }
 }

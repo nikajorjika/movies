@@ -22,14 +22,16 @@
                 :playing.sync="playing"
                 @click="handlePlayPause"
             />
+            <progress-bar class="progress-bar" />
         </div>
     </div>
 </template>
 
 <script>
-import PlayPauseButton from "./PlayPauseButton.vue";
+import PlayPauseButton from "./PlayPauseButton";
+import ProgressBar from "./ProgressBar";
 export default {
-    components: { PlayPauseButton },
+    components: { PlayPauseButton, ProgressBar },
     data() {
         return {
             playing: false
@@ -50,5 +52,13 @@ export default {
 <style lang="scss" scoped>
 .video-player {
     padding-top: 56.25%;
+    .progress-bar {
+        opacity: 0;
+    }
+    &:hover {
+        .progress-bar {
+            opacity: 1;
+        }
+    }
 }
 </style>
