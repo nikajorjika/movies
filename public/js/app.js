@@ -2498,7 +2498,6 @@ __webpack_require__.r(__webpack_exports__);
     handleClick: function handleClick() {
       var _this = this;
 
-      this.$emit("click");
       this.$emit("update:playing", !this.playing);
       this.animating = true;
       setTimeout(function () {
@@ -2536,7 +2535,110 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: {
+    playing: {
+      type: Boolean,
+      required: true
+    },
+    played: {
+      type: Number,
+      "default": 0
+    },
+    duration: {
+      type: Number,
+      "default": 0
+    }
+  },
+  data: function data() {
+    return {
+      leftPosition: 0
+    };
+  },
+  computed: {
+    timeDuration: function timeDuration() {
+      return this.toDateFormat(this.duration);
+    },
+    timePlayed: function timePlayed() {
+      return this.toDateFormat(this.played);
+    }
+  },
+  mounted: function mounted() {
+    this.leftPosition = this.$refs.progressBar.getBoundingClientRect().left;
+  },
+  methods: {
+    toDateFormat: function toDateFormat(seconds) {
+      return new Date(seconds * 1000).toISOString().substr(11, 8);
+    },
+    handleHover: function handleHover(e) {
+      var approxWidth = parseInt(e.screenX) - parseInt(this.leftPosition) - 10;
+      this.$refs.mouseover.style.width = "".concat(approxWidth, "px");
+    },
+    handleLeave: function handleLeave() {
+      this.$refs.mouseover.style.width = "0px";
+    },
+    goToTime: function goToTime(e) {
+      var approxWidth = parseInt(e.screenX) - parseInt(this.leftPosition) - 10;
+      var fullWidth = this.$refs.railBar.offsetWidth;
+      var percentageWidth = approxWidth / fullWidth * 100 < 100 ? approxWidth / fullWidth * 100 : 100;
+      console.log(parseInt(percentageWidth));
+    },
+    playPause: function playPause() {
+      this.$emit("update:playing", !this.playing);
+    }
+  }
+});
 
 /***/ }),
 
@@ -2582,6 +2684,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -2591,16 +2695,42 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      playing: false
+      playing: false,
+      duration: 0,
+      played: 0,
+      videoNode: null
     };
   },
+  mounted: function mounted() {
+    this.videoNode = this.$refs.VideoPlayer;
+    this.regiterVideoLoadedEvent();
+  },
+  watch: {
+    playing: {
+      handler: "handlePlayPause",
+      immediate: false
+    }
+  },
   methods: {
-    handlePlayPause: function handlePlayPause() {
-      if (this.playing) {
-        this.$refs.VideoPlayer.pause();
-      } else {
+    handlePlayPause: function handlePlayPause(playing) {
+      if (playing) {
         this.$refs.VideoPlayer.play();
+      } else {
+        this.$refs.VideoPlayer.pause();
       }
+    },
+    regiterVideoLoadedEvent: function regiterVideoLoadedEvent() {
+      this.videoNode.addEventListener("loadeddata", this.onVideoLoaded, false);
+      this.videoNode.addEventListener("timeupdate", this.seekTimeUpdate, false);
+    },
+    seekTimeUpdate: function seekTimeUpdate() {
+      this.played = this.videoNode.currentTime;
+    },
+    onVideoLoaded: function onVideoLoaded() {
+      this.duration = this.$refs.VideoPlayer.duration;
+    },
+    handleSkipTo: function handleSkipTo(seconds) {
+      console.log("go to seconds" + seconds);
     }
   }
 });
@@ -3164,7 +3294,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".progress-bar:hover .buffered[data-v-069eca03] {\n  background: white;\n}\n.progress-bar:hover .rail[data-v-069eca03] {\n  background: #b9b9b9;\n}\n.progress-bar .buffered[data-v-069eca03] {\n  width: 20%;\n  background: rgba(255, 255, 255, 0.4);\n}\n.progress-bar .progress[data-v-069eca03] {\n  width: 10%;\n}\n.progress-bar .rail[data-v-069eca03] {\n  background: rgba(185, 185, 185, 0.3);\n  opacity: 0.7;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".progress-bar[data-v-069eca03] {\n  background-image: linear-gradient(to bottom, rgba(51, 51, 51, 0), rgba(0, 0, 0, 0.8) 70%, var(--mv-black) 100%);\n}\n.progress-bar:hover .buffered[data-v-069eca03] {\n  background: white;\n}\n.progress-bar .buffered[data-v-069eca03] {\n  width: 20%;\n  background: rgba(255, 255, 255, 0.4);\n}\n.progress-bar .progress[data-v-069eca03] {\n  width: 10%;\n}\n.progress-bar .rail[data-v-069eca03] {\n  background: rgba(185, 185, 185, 0.3);\n  opacity: 0.7;\n  height: 4px;\n  transition: all 0.2s;\n}\n.progress-bar .rail[data-v-069eca03]:hover {\n  height: 7px;\n}\n.progress-bar .rail:hover .handle[data-v-069eca03] {\n  height: 20px;\n  width: 20px;\n  top: -7px;\n}\n.progress-bar .rail .handle[data-v-069eca03] {\n  transition: all 0.2s;\n  height: 16px;\n  width: 16px;\n  top: -6px;\n}\n.progress-bar .rail .mouseover[data-v-069eca03] {\n  background: #b9b9b9;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -24898,7 +25028,111 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    {
+      ref: "progressBar",
+      staticClass:
+        "progress-bar z-20 transition-all h-10 w-full px-3 absolute bottom-0"
+    },
+    [
+      _c("div", { staticClass: "relative" }, [
+        _c(
+          "div",
+          {
+            ref: "railBar",
+            staticClass: "rail cursor-pointer w-full absolute",
+            on: {
+              mousemove: _vm.handleHover,
+              mouseleave: _vm.handleLeave,
+              click: _vm.goToTime
+            }
+          },
+          [
+            _c("div", {
+              ref: "mouseover",
+              staticClass: "mouseover absolute top-0 bottom-0 left-0"
+            }),
+            _vm._v(" "),
+            _c("div", {
+              staticClass: "buffered h-full absolute top-0 left-0 bg-red"
+            }),
+            _vm._v(" "),
+            _vm._m(0)
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "controls flex items-center h-full" }, [
+        _c(
+          "div",
+          {
+            staticClass:
+              "play cursor-pointer h-7 w-7 text-white hover:text-green-700 transition-all ml-3 mr-5",
+            on: { click: _vm.playPause }
+          },
+          [
+            _c(
+              "svg",
+              {
+                attrs: {
+                  xmlns: "http://www.w3.org/2000/svg",
+                  fill: "none",
+                  viewBox: "0 0 24 24",
+                  stroke: "currentColor"
+                }
+              },
+              [
+                !_vm.playing
+                  ? _c("path", {
+                      attrs: {
+                        strokeLinecap: "round",
+                        strokeLinejoin: "round",
+                        strokeWidth: "{2}",
+                        d:
+                          "M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
+                      }
+                    })
+                  : _vm._e(),
+                _vm._v(" "),
+                !_vm.playing
+                  ? _c("path", {
+                      attrs: {
+                        strokeLinecap: "round",
+                        strokeLinejoin: "round",
+                        strokeWidth: "{2}",
+                        d: "M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      }
+                    })
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.playing
+                  ? _c("path", {
+                      attrs: {
+                        strokeLinecap: "round",
+                        strokeLinejoin: "round",
+                        strokeWidth: "{2}",
+                        d: "M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                      }
+                    })
+                  : _vm._e()
+              ]
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "duration text-white" }, [
+          _vm._v(
+            "\n            " +
+              _vm._s(_vm.timePlayed) +
+              " / " +
+              _vm._s(_vm.timeDuration) +
+              "\n        "
+          )
+        ])
+      ])
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
@@ -24907,29 +25141,12 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "div",
-      {
-        staticClass:
-          "progress-bar z-20 transition-all h-10 w-full px-3 absolute bottom-0"
-      },
+      { staticClass: "progress bg-green-700 h-full absolute top-0 left-0" },
       [
-        _c("div", { staticClass: "rail cursor-pointer w-full h-1 relative" }, [
-          _c("div", {
-            staticClass: "buffered h-full absolute top-0 left-0 bg-red"
-          }),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "progress bg-green-700 h-full absolute top-0 left-0"
-            },
-            [
-              _c("div", {
-                staticClass:
-                  "handle absolute -right-1.5 -top-1.5 h-4 w-4 bg-green-700 rounded-full"
-              })
-            ]
-          )
-        ])
+        _c("div", {
+          staticClass:
+            "handle absolute -right-1.5 -top-1.5 bg-green-700 rounded-full"
+        })
       ]
     )
   }
@@ -24994,12 +25211,24 @@ var render = function() {
           on: {
             "update:playing": function($event) {
               _vm.playing = $event
-            },
-            click: _vm.handlePlayPause
+            }
           }
         }),
         _vm._v(" "),
-        _c("progress-bar", { staticClass: "progress-bar" })
+        _c("progress-bar", {
+          staticClass: "progress-bar",
+          attrs: {
+            playing: _vm.playing,
+            played: _vm.played,
+            duration: _vm.duration
+          },
+          on: {
+            "update:playing": function($event) {
+              _vm.playing = $event
+            },
+            "skip-to": _vm.handleSkipTo
+          }
+        })
       ],
       1
     )

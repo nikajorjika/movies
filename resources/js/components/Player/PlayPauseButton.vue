@@ -62,7 +62,6 @@ export default {
     },
     methods: {
         handleClick() {
-            this.$emit("click");
             this.$emit("update:playing", !this.playing);
             this.animating = true;
             setTimeout(() => {

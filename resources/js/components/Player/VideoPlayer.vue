@@ -17,12 +17,14 @@
                 />
                 Your browser does not support the video tag.
             </video>
-            <play-pause-button
-                class="z-20"
+            <play-pause-button class="z-20" :playing.sync="playing" />
+            <progress-bar
+                class="progress-bar"
                 :playing.sync="playing"
-                @click="handlePlayPause"
+                :played="played"
+                :duration="duration"
+                @skip-to="handleSkipTo"
             />
-            <progress-bar class="progress-bar" />
         </div>
     </div>
 </template>
@@ -34,16 +36,51 @@ export default {
     components: { PlayPauseButton, ProgressBar },
     data() {
         return {
-            playing: false
+            playing: false,
+            duration: 0,
+            played: 0,
+            videoNode: null
         };
     },
+    mounted() {
+        this.videoNode = this.$refs.VideoPlayer;
+        this.regiterVideoLoadedEvent();
+    },
+    watch: {
+        playing: {
+            handler: "handlePlayPause",
+            immediate: false
+        }
+    },
     methods: {
-        handlePlayPause() {
-            if (this.playing) {
-                this.$refs.VideoPlayer.pause();
-            } else {
+        handlePlayPause(playing) {
+            if (playing) {
                 this.$refs.VideoPlayer.play();
+            } else {
+                this.$refs.VideoPlayer.pause();
             }
+        },
+        regiterVideoLoadedEvent() {
+            this.videoNode.addEventListener(
+                "loadeddata",
+                this.onVideoLoaded,
+                false
+            );
+
+            this.videoNode.addEventListener(
+                "timeupdate",
+                this.seekTimeUpdate,
+                false
+            );
+        },
+        seekTimeUpdate() {
+            this.played = this.videoNode.currentTime;
+        },
+        onVideoLoaded() {
+            this.duration = this.$refs.VideoPlayer.duration;
+        },
+        handleSkipTo(seconds) {
+            console.log("go to seconds" + seconds);
         }
     }
 };
