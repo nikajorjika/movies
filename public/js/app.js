@@ -2586,6 +2586,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     playing: {
@@ -2612,6 +2615,10 @@ __webpack_require__.r(__webpack_exports__);
     },
     timePlayed: function timePlayed() {
       return this.toDateFormat(this.played);
+    },
+    percentagePlayed: function percentagePlayed() {
+      console.log(Date.now());
+      return parseFloat(this.played / this.duration * 100).toFixed(2);
     }
   },
   mounted: function mounted() {
@@ -3294,7 +3301,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".progress-bar[data-v-069eca03] {\n  background-image: linear-gradient(to bottom, rgba(51, 51, 51, 0), rgba(0, 0, 0, 0.8) 70%, var(--mv-black) 100%);\n}\n.progress-bar:hover .buffered[data-v-069eca03] {\n  background: white;\n}\n.progress-bar .buffered[data-v-069eca03] {\n  width: 20%;\n  background: rgba(255, 255, 255, 0.4);\n}\n.progress-bar .progress[data-v-069eca03] {\n  width: 10%;\n}\n.progress-bar .rail[data-v-069eca03] {\n  background: rgba(185, 185, 185, 0.3);\n  opacity: 0.7;\n  height: 4px;\n  transition: all 0.2s;\n}\n.progress-bar .rail[data-v-069eca03]:hover {\n  height: 7px;\n}\n.progress-bar .rail:hover .handle[data-v-069eca03] {\n  height: 20px;\n  width: 20px;\n  top: -7px;\n}\n.progress-bar .rail .handle[data-v-069eca03] {\n  transition: all 0.2s;\n  height: 16px;\n  width: 16px;\n  top: -6px;\n}\n.progress-bar .rail .mouseover[data-v-069eca03] {\n  background: #b9b9b9;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".progress-bar[data-v-069eca03] {\n  background-image: linear-gradient(to bottom, rgba(51, 51, 51, 0), rgba(0, 0, 0, 0.8) 70%, var(--mv-black) 100%);\n}\n.progress-bar:hover .buffered[data-v-069eca03] {\n  background: white;\n}\n.progress-bar .buffered[data-v-069eca03] {\n  width: 20%;\n  background: rgba(255, 255, 255, 0.4);\n}\n.progress-bar .rail[data-v-069eca03] {\n  background: rgba(185, 185, 185, 0.3);\n  opacity: 0.7;\n  height: 4px;\n  transition: all 0.2s;\n}\n.progress-bar .rail[data-v-069eca03]:hover {\n  height: 7px;\n}\n.progress-bar .rail:hover .handle[data-v-069eca03] {\n  height: 20px;\n  width: 20px;\n  top: -7px;\n}\n.progress-bar .rail .handle[data-v-069eca03] {\n  transition: all 0.2s;\n  height: 16px;\n  width: 16px;\n  top: -6px;\n}\n.progress-bar .rail .mouseover[data-v-069eca03] {\n  background: #b9b9b9;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -25058,7 +25065,20 @@ var render = function() {
               staticClass: "buffered h-full absolute top-0 left-0 bg-red"
             }),
             _vm._v(" "),
-            _vm._m(0)
+            _c(
+              "div",
+              {
+                staticClass:
+                  "progress bg-green-700 h-full absolute top-0 left-0 transition-all",
+                style: { width: _vm.percentagePlayed + "%" }
+              },
+              [
+                _c("div", {
+                  staticClass:
+                    "handle absolute -right-1.5 -top-1.5 bg-green-700 rounded-full"
+                })
+              ]
+            )
           ]
         )
       ]),
@@ -25127,6 +25147,8 @@ var render = function() {
               _vm._s(_vm.timePlayed) +
               " / " +
               _vm._s(_vm.timeDuration) +
+              " / " +
+              _vm._s(_vm.percentagePlayed) +
               "\n        "
           )
         ])
@@ -25134,23 +25156,7 @@ var render = function() {
     ]
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "progress bg-green-700 h-full absolute top-0 left-0" },
-      [
-        _c("div", {
-          staticClass:
-            "handle absolute -right-1.5 -top-1.5 bg-green-700 rounded-full"
-        })
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

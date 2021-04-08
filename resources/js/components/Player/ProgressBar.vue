@@ -16,7 +16,10 @@
                     class="mouseover absolute top-0 bottom-0 left-0"
                 ></div>
                 <div class="buffered h-full absolute top-0 left-0 bg-red"></div>
-                <div class="progress bg-green-700 h-full absolute top-0 left-0">
+                <div
+                    class="progress bg-green-700 h-full absolute top-0 left-0 transition-all"
+                    :style="{ width: `${percentagePlayed}%` }"
+                >
                     <div
                         class="handle absolute -right-1.5 -top-1.5 bg-green-700 rounded-full"
                     ></div>
@@ -58,7 +61,7 @@
                 </svg>
             </div>
             <div class="duration text-white">
-                {{ timePlayed }} / {{ timeDuration }}
+                {{ timePlayed }} / {{ timeDuration }} / {{ percentagePlayed }}
             </div>
         </div>
     </div>
@@ -91,6 +94,10 @@ export default {
         },
         timePlayed() {
             return this.toDateFormat(this.played);
+        },
+        percentagePlayed() {
+            console.log(Date.now());
+            return parseFloat((this.played / this.duration) * 100).toFixed(2);
         }
     },
     mounted() {
@@ -142,9 +149,6 @@ export default {
     .buffered {
         width: 20%;
         background: rgba(255, 255, 255, 0.4);
-    }
-    .progress {
-        width: 10%;
     }
     .rail {
         background: rgba(185, 185, 185, 0.3);
