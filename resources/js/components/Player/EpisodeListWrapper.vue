@@ -1,10 +1,10 @@
 <template>
-    <div class="absolute w-1/3 right-0 top-0 h-full overflow-y-auto">
+    <div class="absolute w-1/3 right-0 top-0 h-full overflow-y-auto bg-gray-900">
         <div class="">
             <div
-                v-for="item in 10"
+                v-for="item in 2"
                 :key="item.id"
-                class="flex px-5 py-5 bg-gray-900"
+                class="flex px-5 py-5"
             >
                 <div class="pr-4 text-gray-300">{{ item }}</div>
                 <div class="image h-full w-32">

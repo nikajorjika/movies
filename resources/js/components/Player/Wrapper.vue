@@ -1,9 +1,9 @@
 <template>
     <div class="flex relative">
         <div class="w-2/3">
-            <video-player />
+            <video-player :source="source" :key="key" />
         </div>
-        <episode-list-wrapper />
+        <episode-list-wrapper @changeEpisode="handleSourceChange" />
     </div>
 </template>
 
@@ -12,7 +12,16 @@ import EpisodeListWrapper from "./EpisodeListWrapper.vue";
 import VideoPlayer from "./VideoPlayer.vue";
 
 export default {
-    components: { VideoPlayer, EpisodeListWrapper }
+    components: { VideoPlayer, EpisodeListWrapper },
+    data() {
+        return {
+            source: "/videos/video.mp4",
+            key: 1
+        };
+    },
+    methods: {
+        handleSourceChange() {}
+    }
 };
 </script>
 

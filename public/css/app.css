@@ -19,6 +19,8 @@
   --mv-success-color: #398f14;
   --mv-form-gradient-color: rgba(11, 1, 2, 0);
   --mv-to-gradient-color: rgba(255, 55, 65, 0.3);
+  --plyr-color-main: #3caa6a;
+  --plyr-tab-focus-color: #88a5da;
 }
 
 @-webkit-keyframes slideUp {
