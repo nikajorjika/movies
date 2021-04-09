@@ -41,6 +41,7 @@ class MovieRepository extends BaseRepository implements MovieRepositoryInterface
     {
         return $this
             ->model
+            ->with('episodes')
             ->where('id', $sid)
             ->orWhere('slug', $sid)
             ->firstOrFail();

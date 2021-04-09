@@ -17,7 +17,7 @@ class MovieController extends Controller
     public function index(string $slug)
     {
         $movie = $this->movieRepository->find($slug);
-
+        dd($movie);
         return view('pages.details', compact('movie'));
     }
 }
