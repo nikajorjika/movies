@@ -14,6 +14,7 @@
         "laravel/tinker": "^2.5",
         "spatie/laravel-medialibrary-pro": "^1.12",
         "spatie/laravel-permission": "^4.0",
+        "spatie/laravel-tags": "^4.0",
         "vyuldashev/nova-permission": "^2.11"
     },
     "require-dev": {

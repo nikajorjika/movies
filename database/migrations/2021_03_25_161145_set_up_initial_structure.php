@@ -30,13 +30,16 @@ class SetUpInitialStructure extends Migration
 
         Schema::create('movies', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->nullable();
-            $table->string('slug');
+            $table->string('name');
             $table->json('other_names')->nullable();
-            $table->string('original_name');
-            $table->string('plot')->nullable();
-            $table->enum('status', ['planned', 'ongoing', 'finished'])->default('ongoing');
-            $table->timestamp('release_date');
+            $table->string('slug');
+            $table->string('year')->nullable();
+            $table->string('type')->nullable();
+            $table->longText('plot')->nullable();
+            $table->enum('status', ['unknown', 'upcoming', 'currently', 'finished'])->default('currently');
+            $table->json('sources')->nullable();
+            $table->json('relations')->nullable();
+            $table->timestamp('release_date')->nullable();
             $table->timestamps();
         });
 
@@ -47,7 +50,7 @@ class SetUpInitialStructure extends Migration
             $table->enum('type', ['dubbed', 'subbed']);
             $table->foreignId('movie_id')->constrained();
             $table->foreignId('language_id')->constrained();
-            $table->timestamp('release_date');
+            $table->timestamp('release_date')->nullable();
             $table->timestamps();
         });
 

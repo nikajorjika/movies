@@ -7,18 +7,23 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\Tags\HasTags;
 
 class Movie extends Model implements HasMedia
 {
     use HasFactory,
-        InteractsWithMedia;
+        InteractsWithMedia,
+        HasTags;
 
     protected $guarded = [];
+    
+    protected $statuses = ['planned', 'ongoing', 'finished'];
 
     protected $casts = [
         'name' => 'array',
         'other_names' => 'array',
-        'plot' => 'array'
+        'sources' => 'array',
+        'relations' => 'array'
     ];
 
     public function episodes()

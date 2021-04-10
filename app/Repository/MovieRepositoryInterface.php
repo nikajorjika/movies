@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Models\Movie;
 use Illuminate\Database\Eloquent\Collection;
+use stdClass;
 
 /**
  * Interface EloquentRepositoryInterface
@@ -27,6 +28,12 @@ interface MovieRepositoryInterface
    * @return Collection
    */
   public function getSliderMovies(): Collection;
+
+  /**
+   * @param Array $importedObject
+   * @return Movie
+   */
+  public function createMovieFromImportedData(Array $importedObject): ?Movie;
 
   /**
    * @return Collection
