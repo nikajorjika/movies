@@ -1,8 +1,8 @@
 <template>
-    <footer class="flex mt-auto">
-        <div class="mx-auto w-full max-w-screen-2xl py-16">
-            <div class="flex">
-                <div class="w-1/2">
+    <footer class="flex px-6 mt-auto">
+        <div class="mx-auto w-full max-w-screen-xl py-16">
+            <div class="flex flex-wrap lg:flex-nowrap">
+                <div class="w-full lg:w-1/2 pr-3 mb-6 lg:mb-0">
                     <ul class="text-white flex mb-7">
                         <li
                             v-for="{ name, href, id } in menu"
@@ -20,9 +20,9 @@
                         prohibited. All rights reserved.
                     </p>
                 </div>
-                <div class="ml-auto mr-10">
+                <div class="ml-auto pr-3 w-1/2 lg:w-max">
                     <h6 class="mb-7 text-white">
-                        Follow Us :
+                        Follow Us:
                     </h6>
                     <ul class="flex">
                         <li v-for="social in socials" :key="social.id">
@@ -48,7 +48,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="">
+                <div class="w-1/2 lg:w-max">
                     <h6 class="text-white mb-7">Streamit App</h6>
                     <div class="flex">
                         <a class="mr-5" href="#"

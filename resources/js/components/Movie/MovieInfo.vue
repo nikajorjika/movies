@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col px-10 max-w-screen-2xl h-full relative">
+    <div class="flex flex-col px-10 max-w-screen-xl h-full relative">
         <h2 class="textured-title text-7xl font-extrabold mb-5">
             Pirates of Sea
         </h2>

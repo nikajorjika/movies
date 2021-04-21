@@ -1,6 +1,6 @@
 <template>
     <div
-        class="slide w-full bg-center bg-cover bg-no-repeat relative z-0"
+        class="slide px-24 w-full bg-center bg-cover bg-no-repeat relative z-0"
         :style="styles"
     >
         <description />

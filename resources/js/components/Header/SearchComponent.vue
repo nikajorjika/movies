@@ -2,7 +2,7 @@
     <div class="flex items-center justify-end relative" v-click-outside="hide">
         <a
             href="#"
-            class="block text-gray-300 hover:text-red-600"
+            class="hidden md:block text-gray-300 hover:text-red-600"
             @click="toggleSearch"
         >
             <svg
@@ -23,12 +23,12 @@
         </a>
         <form
             method="get"
-            class="absolute top-full right-0"
-            :class="[active ? 'block slide-up' : 'hidden']"
+            class="w-full md:absolute md:top-full md:right-0"
+            :class="[active ? 'block slide-up' : 'md:hidden']"
         >
             <input
                 type="text"
-                class="pl-4 pr-10 bg-footer-bg text-gray-200 h-10 w-80 rounded"
+                class="w-full pl-4 pr-10 bg-footer-bg text-gray-200 h-10 w-80 rounded"
                 placeholder="Search..."
             />
             <button

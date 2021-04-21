@@ -1,5 +1,5 @@
 <template>
-    <div class="mt-20 mb-20 max-w-screen-2xl mx-auto flex">
+    <div class="mt-20 mb-20 max-w-screen-xl mx-auto flex">
         <div class="relative cover">
             <img
                 class="object-cover h-full w-full block"

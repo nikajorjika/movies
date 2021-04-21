@@ -9,13 +9,13 @@
                 />
             </div>
             <div
-                class="absolute top-0 left-8 z-50 h-full flex flex-col justify-center text-white"
+                class="absolute top-0 left-8 right-8 z-50 h-full flex flex-col justify-center text-white"
             >
                 <h6 class="text-current">
                     <a
                         :href="url"
                         tabindex="0"
-                        class="block mb-2 focus:outline-none"
+                        class="block mb-2 focus:outline-none w-full block whitespace-nowrap overflow-ellipsis overflow-hidden"
                     >
                         {{ movie.name }}
                     </a>

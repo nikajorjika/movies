@@ -1,7 +1,7 @@
 <template>
-    <div class="flex py-2 max-w-screen-2xl mx-auto h-full z-10 relative">
+    <div class="flex py-2 max-w-screen-xl mx-auto h-full z-10 relative">
         <div class="h-full w-full flex">
-            <div class="w-1/2 flex">
+            <div class="w-full lg:w-1/2 flex">
                 <div class="my-auto">
                     <h2 class="textured-title text-7xl font-extrabold">
                         Pirates of Sea
@@ -91,7 +91,7 @@
                     </button>
                 </div>
             </div>
-            <div class="w-1/2"></div>
+            <div class="w-1/2 hidden lg:block"></div>
         </div>
     </div>
 </template>

@@ -2179,8 +2179,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -23706,10 +23704,10 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("footer", { staticClass: "flex mt-auto" }, [
-    _c("div", { staticClass: "mx-auto w-full max-w-screen-2xl py-16" }, [
-      _c("div", { staticClass: "flex" }, [
-        _c("div", { staticClass: "w-1/2" }, [
+  return _c("footer", { staticClass: "flex px-6 mt-auto" }, [
+    _c("div", { staticClass: "mx-auto w-full max-w-screen-xl py-16" }, [
+      _c("div", { staticClass: "flex flex-wrap lg:flex-nowrap" }, [
+        _c("div", { staticClass: "w-full lg:w-1/2 pr-3 mb-6 lg:mb-0" }, [
           _c(
             "ul",
             { staticClass: "text-white flex mb-7" },
@@ -23731,9 +23729,9 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "ml-auto mr-10" }, [
+        _c("div", { staticClass: "ml-auto pr-3 w-1/2 lg:w-max" }, [
           _c("h6", { staticClass: "mb-7 text-white" }, [
-            _vm._v("\n                    Follow Us :\n                ")
+            _vm._v("\n                    Follow Us:\n                ")
           ]),
           _vm._v(" "),
           _c(
@@ -23789,7 +23787,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", {}, [
+    return _c("div", { staticClass: "w-1/2 lg:w-max" }, [
       _c("h6", { staticClass: "text-white mb-7" }, [_vm._v("Streamit App")]),
       _vm._v(" "),
       _c("div", { staticClass: "flex" }, [
@@ -23841,17 +23839,25 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "header",
-    { staticClass: "h-20 fixed w-full top-0 right-0 left-0 z-20" },
+    { staticClass: "md:h-20 px-6 fixed w-full top-0 right-0 left-0 z-20" },
     [
       _c(
         "div",
-        { staticClass: "flex py-2 max-w-screen-2xl mx-auto h-full" },
+        {
+          staticClass:
+            "flex flex-wrap order-1 md:order-1 md:flex-nowrap py-2 max-w-screen-xl mx-auto h-full"
+        },
         [
-          _c("logo", { staticClass: "h-full w-40" }),
+          _c("logo", { staticClass: "w-2/12 md:w-40 h-full" }),
           _vm._v(" "),
-          _c("responsive-navigation", { staticClass: "h-full mx-auto" }),
+          _c("responsive-navigation", {
+            staticClass:
+              "h-full w-full mt-4 md:mt-0 order-3 md:order-2 md:w-auto mx-auto"
+          }),
           _vm._v(" "),
-          _c("search-component", { staticClass: "h-full w-40" })
+          _c("search-component", {
+            staticClass: "h-full pl-5 w-10/12 md:w-40 order-2 md:order-3"
+          })
         ],
         1
       )
@@ -23984,7 +23990,7 @@ var render = function() {
       _c(
         "a",
         {
-          staticClass: "block text-gray-300 hover:text-red-600",
+          staticClass: "hidden md:block text-gray-300 hover:text-red-600",
           attrs: { href: "#" },
           on: { click: _vm.toggleSearch }
         },
@@ -24018,14 +24024,14 @@ var render = function() {
       _c(
         "form",
         {
-          staticClass: "absolute top-full right-0",
-          class: [_vm.active ? "block slide-up" : "hidden"],
+          staticClass: "w-full md:absolute md:top-full md:right-0",
+          class: [_vm.active ? "block slide-up" : "md:hidden"],
           attrs: { method: "get" }
         },
         [
           _c("input", {
             staticClass:
-              "pl-4 pr-10 bg-footer-bg text-gray-200 h-10 w-80 rounded",
+              "w-full pl-4 pr-10 bg-footer-bg text-gray-200 h-10 w-80 rounded",
             attrs: { type: "text", placeholder: "Search..." }
           }),
           _vm._v(" "),
@@ -24092,28 +24098,33 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "max-w-screen-2xl mx-auto w-full my-10 text-white" },
-    [
-      _vm.mainList
-        ? _c("h1", { staticClass: "text-3xl text-current" }, [
-            _vm._v(_vm._s(_vm.title))
-          ])
-        : _c("h2", { staticClass: "text-3xl text-current" }, [
-            _vm._v(_vm._s(_vm.title))
-          ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "grid mt-3 grid-cols-4 gap-6" },
-        _vm._l(_vm.movies, function(movie) {
-          return _c("movie-item", { key: movie.id, attrs: { movie: movie } })
-        }),
-        1
-      )
-    ]
-  )
+  return _c("div", { staticClass: "w-full px-1 sm:px-5 md:px-10" }, [
+    _c(
+      "div",
+      { staticClass: "max-w-screen-xl mx-auto w-full my-10 text-white" },
+      [
+        _vm.mainList
+          ? _c("h1", { staticClass: "text-3xl text-current" }, [
+              _vm._v(_vm._s(_vm.title))
+            ])
+          : _c("h2", { staticClass: "text-3xl text-current" }, [
+              _vm._v(_vm._s(_vm.title))
+            ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "grid mt-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 lg:gap-6"
+          },
+          _vm._l(_vm.movies, function(movie) {
+            return _c("movie-item", { key: movie.id, attrs: { movie: movie } })
+          }),
+          1
+        )
+      ]
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -24140,7 +24151,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "mt-20 max-w-screen-2xl w-full mx-auto px-10" },
+    { staticClass: "mt-20 max-w-screen-xl w-full mx-auto px-10" },
     [_c("video-player-wrapper"), _vm._v(" "), _c("details-poster-section")],
     1
   )
@@ -24170,7 +24181,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "mt-20 mb-20 max-w-screen-2xl mx-auto flex" },
+    { staticClass: "mt-20 mb-20 max-w-screen-xl mx-auto flex" },
     [_vm._m(0), _vm._v(" "), _c("movie-info")],
     1
   )
@@ -24223,7 +24234,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "div",
-      { staticClass: "flex flex-col px-10 max-w-screen-2xl h-full relative" },
+      { staticClass: "flex flex-col px-10 max-w-screen-xl h-full relative" },
       [
         _c(
           "h2",
@@ -24292,14 +24303,15 @@ var render = function() {
         "div",
         {
           staticClass:
-            "absolute top-0 left-8 z-50 h-full flex flex-col justify-center text-white"
+            "absolute top-0 left-8 right-8 z-50 h-full flex flex-col justify-center text-white"
         },
         [
           _c("h6", { staticClass: "text-current" }, [
             _c(
               "a",
               {
-                staticClass: "block mb-2 focus:outline-none",
+                staticClass:
+                  "block mb-2 focus:outline-none w-full block whitespace-nowrap overflow-ellipsis overflow-hidden",
                 attrs: { href: _vm.url, tabindex: "0" }
               },
               [
@@ -24661,10 +24673,10 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "flex py-2 max-w-screen-2xl mx-auto h-full z-10 relative" },
+    { staticClass: "flex py-2 max-w-screen-xl mx-auto h-full z-10 relative" },
     [
       _c("div", { staticClass: "h-full w-full flex" }, [
-        _c("div", { staticClass: "w-1/2 flex" }, [
+        _c("div", { staticClass: "w-full lg:w-1/2 flex" }, [
           _c("div", { staticClass: "my-auto" }, [
             _c(
               "h2",
@@ -24725,7 +24737,7 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "w-1/2" })
+        _c("div", { staticClass: "w-1/2 hidden lg:block" })
       ])
     ]
   )
@@ -24841,7 +24853,8 @@ var render = function() {
   return _c(
     "div",
     {
-      staticClass: "slide w-full bg-center bg-cover bg-no-repeat relative z-0",
+      staticClass:
+        "slide px-24 w-full bg-center bg-cover bg-no-repeat relative z-0",
       style: _vm.styles
     },
     [_c("description")],

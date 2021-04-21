@@ -1,5 +1,5 @@
 <template>
-    <div class="mt-20 max-w-screen-2xl w-full mx-auto px-10">
+    <div class="mt-20 max-w-screen-xl w-full mx-auto px-10">
         <video-player-wrapper />
         <details-poster-section />
     </div>

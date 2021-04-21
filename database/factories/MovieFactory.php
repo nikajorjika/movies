@@ -26,7 +26,6 @@ class MovieFactory extends Factory
         $name = $this->faker->text(10);
         return [
             'name' => $name,
-            'original_name' => $name,
             'slug' => Str::slug($name),
             'release_date' => Carbon::now()->addDays(rand(0, 100)),
             'plot' =>  $this->faker->text(150),
