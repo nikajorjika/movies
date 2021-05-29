@@ -1,27 +1,25 @@
 <template>
-    <div class="flex relative">
-        <div class="w-2/3">
-            <video-player :source="source" :key="key" />
-        </div>
-        <episode-list-wrapper @changeEpisode="handleSourceChange" />
-    </div>
+  <div class="flex flex-col relative">
+    <video-player :source="source" :key="key" />
+    <control-wrapper @changeEpisode="handleSourceChange" />
+  </div>
 </template>
 
 <script>
-import EpisodeListWrapper from "./EpisodeListWrapper.vue";
-import VideoPlayer from "./VideoPlayer.vue";
+import ControlWrapper from "components/Player/ControlWrapper.vue";
+import VideoPlayer from "components/Player/VideoPlayer.vue";
 
 export default {
-    components: { VideoPlayer, EpisodeListWrapper },
-    data() {
-        return {
-            source: "/videos/video.mp4",
-            key: 1
-        };
-    },
-    methods: {
-        handleSourceChange() {}
-    }
+  components: { VideoPlayer, ControlWrapper },
+  data() {
+    return {
+      source: "/videos/video.mp4",
+      key: 1,
+    };
+  },
+  methods: {
+    handleSourceChange() {},
+  },
 };
 </script>
 

@@ -1,7 +1,5 @@
 @extends('layouts.master')
 
 @section('content')
-    <base-slider :slides="{{ json_encode($sliderMovies) }}">
-    </base-slider>
-    <base-list title="Movies" :movies="{{ json_encode($topMovieList) }}"></base-list>
+    <home-page :slides="{{ json_encode($sliderMovies) }}" :movies="{{ json_encode($topMovieList) }}"></home-page>
 @endsection
