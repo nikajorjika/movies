@@ -17,7 +17,7 @@
       </svg>
       Previous
     </action-button>
-    <episodes-dropdown class="mx-2.5" />
+    <episodes-dropdown class="mx-2.5" :episode-list="formattedEpisodeList" />
     <action-button @click="go(1)">
       Next
       <svg
@@ -44,9 +44,22 @@ import ActionButton from "components/Player/ActionButton.vue";
 
 export default {
   components: { ActionButton, EpisodesDropdown },
+  props: {
+    episodeList: {
+      type: Array,
+      required: true,
+    },
+  },
+  computed: {
+    formattedEpisodeList() {
+      console.log(this.episodeList);
+      return this.episodeList.map((episode) => {
+        console.log(episode);
+      });
+    },
+  },
   methods: {
     go(direction) {
-      console.log("CHANGE " + direction);
       this.$emit("change", direction);
     },
   },

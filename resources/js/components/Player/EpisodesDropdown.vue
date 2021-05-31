@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div v-click-outside="handleClose">
     <div class="flex-auto flex flex-col items-center relative">
       <episodes-dropdown-selected
         :text="textLabel"
@@ -9,7 +9,7 @@
       <episodes-dropdown-list
         v-if="dropdownOpen"
         :list="Array(20).fill({ label: 'NO EPISODES', value: 3 })"
-        @change="changeCurrentEpisode"
+        @change="handleCurrentEpisodeChange"
       />
     </div>
   </div>
@@ -20,6 +20,12 @@ import EpisodesDropdownList from "components/Player/EpisodesDropdownList.vue";
 import EpisodesDropdownSelected from "components/Player/EpisodesDropdownSelected.vue";
 export default {
   components: { EpisodesDropdownSelected, EpisodesDropdownList },
+  props: {
+    episodeList: {
+      type: Array,
+      required: true,
+    },
+  },
   data() {
     return {
       currentEpisode: 1,
@@ -35,8 +41,11 @@ export default {
     toggleDropdown() {
       this.dropdownOpen = !this.dropdownOpen;
     },
-    changeCurrentEpisode({ value, label }) {
+    handleCurrentEpisodeChange({ value, label }) {
       this.currentEpisode = value;
+      this.dropdownOpen = false;
+    },
+    handleClose() {
       this.dropdownOpen = false;
     },
   },

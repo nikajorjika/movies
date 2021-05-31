@@ -109,6 +109,17 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     VideoPlayerWrapper: components_Player_Wrapper__WEBPACK_IMPORTED_MODULE_1__.default,
     DetailsPosterSection: components_Movie_DetailsPosterSection__WEBPACK_IMPORTED_MODULE_0__.default
+  },
+  props: {
+    movie: {
+      type: Object,
+      required: true
+    }
+  },
+  data: function data() {
+    return {
+      episodes: this.movie.episodes
+    };
   }
 });
 
@@ -174,9 +185,22 @@ __webpack_require__.r(__webpack_exports__);
     ActionButton: components_Player_ActionButton_vue__WEBPACK_IMPORTED_MODULE_1__.default,
     EpisodesDropdown: components_Player_EpisodesDropdown_vue__WEBPACK_IMPORTED_MODULE_0__.default
   },
+  props: {
+    episodeList: {
+      type: Array,
+      required: true
+    }
+  },
+  computed: {
+    formattedEpisodeList: function formattedEpisodeList() {
+      console.log(this.episodeList);
+      return this.episodeList.map(function (episode) {
+        console.log(episode);
+      });
+    }
+  },
   methods: {
     go: function go(direction) {
-      console.log("CHANGE " + direction);
       this.$emit("change", direction);
     }
   }
@@ -221,6 +245,12 @@ __webpack_require__.r(__webpack_exports__);
     EpisodesDropdownSelected: components_Player_EpisodesDropdownSelected_vue__WEBPACK_IMPORTED_MODULE_1__.default,
     EpisodesDropdownList: components_Player_EpisodesDropdownList_vue__WEBPACK_IMPORTED_MODULE_0__.default
   },
+  props: {
+    episodeList: {
+      type: Array,
+      required: true
+    }
+  },
   data: function data() {
     return {
       currentEpisode: 1,
@@ -236,10 +266,13 @@ __webpack_require__.r(__webpack_exports__);
     toggleDropdown: function toggleDropdown() {
       this.dropdownOpen = !this.dropdownOpen;
     },
-    changeCurrentEpisode: function changeCurrentEpisode(_ref) {
+    handleCurrentEpisodeChange: function handleCurrentEpisodeChange(_ref) {
       var value = _ref.value,
           label = _ref.label;
       this.currentEpisode = value;
+      this.dropdownOpen = false;
+    },
+    handleClose: function handleClose() {
       this.dropdownOpen = false;
     }
   }
@@ -411,12 +444,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     VideoPlayer: components_Player_VideoPlayer_vue__WEBPACK_IMPORTED_MODULE_1__.default,
     ControlWrapper: components_Player_ControlWrapper_vue__WEBPACK_IMPORTED_MODULE_0__.default
+  },
+  props: {
+    episodeList: {
+      type: Array,
+      required: true
+    }
   },
   data: function data() {
     return {
@@ -1594,7 +1636,11 @@ var render = function() {
   return _c(
     "div",
     { staticClass: "mt-20 max-w-screen-xl w-full mx-auto px-10" },
-    [_c("video-player-wrapper"), _vm._v(" "), _c("details-poster-section")],
+    [
+      _c("video-player-wrapper", { attrs: { "episode-list": _vm.episodes } }),
+      _vm._v(" "),
+      _c("details-poster-section")
+    ],
     1
   )
 }
@@ -1700,7 +1746,10 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _c("episodes-dropdown", { staticClass: "mx-2.5" }),
+      _c("episodes-dropdown", {
+        staticClass: "mx-2.5",
+        attrs: { "episode-list": _vm.formattedEpisodeList }
+      }),
       _vm._v(" "),
       _c(
         "action-button",
@@ -1764,28 +1813,41 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", {}, [
-    _c(
-      "div",
-      { staticClass: "flex-auto flex flex-col items-center relative" },
-      [
-        _c("episodes-dropdown-selected", {
-          attrs: { text: _vm.textLabel, active: _vm.dropdownOpen },
-          on: { click: _vm.toggleDropdown }
-        }),
-        _vm._v(" "),
-        _vm.dropdownOpen
-          ? _c("episodes-dropdown-list", {
-              attrs: {
-                list: Array(20).fill({ label: "NO EPISODES", value: 3 })
-              },
-              on: { change: _vm.changeCurrentEpisode }
-            })
-          : _vm._e()
-      ],
-      1
-    )
-  ])
+  return _c(
+    "div",
+    {
+      directives: [
+        {
+          name: "click-outside",
+          rawName: "v-click-outside",
+          value: _vm.handleClose,
+          expression: "handleClose"
+        }
+      ]
+    },
+    [
+      _c(
+        "div",
+        { staticClass: "flex-auto flex flex-col items-center relative" },
+        [
+          _c("episodes-dropdown-selected", {
+            attrs: { text: _vm.textLabel, active: _vm.dropdownOpen },
+            on: { click: _vm.toggleDropdown }
+          }),
+          _vm._v(" "),
+          _vm.dropdownOpen
+            ? _c("episodes-dropdown-list", {
+                attrs: {
+                  list: Array(20).fill({ label: "NO EPISODES", value: 3 })
+                },
+                on: { change: _vm.handleCurrentEpisodeChange }
+              })
+            : _vm._e()
+        ],
+        1
+      )
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -1996,7 +2058,10 @@ var render = function() {
     [
       _c("video-player", { key: _vm.key, attrs: { source: _vm.source } }),
       _vm._v(" "),
-      _c("control-wrapper", { on: { changeEpisode: _vm.handleSourceChange } })
+      _c("control-wrapper", {
+        attrs: { "episode-list": _vm.episodeList },
+        on: { changeEpisode: _vm.handleSourceChange }
+      })
     ],
     1
   )

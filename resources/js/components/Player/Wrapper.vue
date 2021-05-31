@@ -1,7 +1,10 @@
 <template>
   <div class="flex flex-col relative">
     <video-player :source="source" :key="key" />
-    <control-wrapper @changeEpisode="handleSourceChange" />
+    <control-wrapper
+      :episode-list="episodeList"
+      @changeEpisode="handleSourceChange"
+    />
   </div>
 </template>
 
@@ -11,6 +14,12 @@ import VideoPlayer from "components/Player/VideoPlayer.vue";
 
 export default {
   components: { VideoPlayer, ControlWrapper },
+  props: {
+    episodeList: {
+      type: Array,
+      required: true,
+    },
+  },
   data() {
     return {
       source: "/videos/video.mp4",
